@@ -1,5 +1,7 @@
 # CLAUDE.md
 
+@RTK.md
+
 ## Mandatory Requirements
 
 - Use Traditional Chinese for all responses by default. Switch languages only when the user explicitly requests it.
