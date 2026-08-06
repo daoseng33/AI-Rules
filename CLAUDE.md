@@ -43,13 +43,14 @@ When finishing a task, summarize:
 
 ## Think Before Coding
 
-**Don't assume. Don't hide confusion. Surface tradeoffs.**
+**Don't assume silently. Don't hide confusion. Surface tradeoffs.**
 
 Before implementing:
-- State your assumptions explicitly. If uncertain, ask.
-- If multiple interpretations exist, present them - don't pick silently.
+- State your assumptions explicitly, then proceed on them.
+- If multiple interpretations exist, say which one you picked and why.
 - If a simpler approach exists, say so. Push back when warranted.
-- If something is unclear, stop. Name what's confusing. Ask.
+- Stop and ask only when the ambiguity would lead to materially different
+  work. Otherwise decide, name the call, and keep going.
 
 ## Simplicity First
 
@@ -96,3 +97,26 @@ For multi-step tasks, state a brief plan:
 ```
 
 Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
+
+## Autonomous Execution
+
+**Decide it yourself. Only stop for humans when you genuinely can't.**
+
+Default: finish the whole task without checking in. Routine judgment calls
+(naming, file layout, which library is already in use, test structure) are
+yours to make - state the assumption and keep going.
+
+Stop and hand back to a human ONLY when:
+- A human decision is required: product/scope tradeoffs, irreversible or
+  outward-facing actions, credentials, spending, anything with no
+  recoverable wrong answer.
+- Manual QA is required: the result can only be judged by a human looking at
+  it (visual/UX, device-specific behavior, third-party integration).
+- Proceeding under any assumption would be unsafe, or would make the work
+  useless if the assumption turns out wrong.
+
+Not reasons to stop:
+- "I want to confirm before continuing."
+- "There are two reasonable approaches." → pick one, say which and why.
+- "One sub-step is blocked." → finish everything else, then report what is
+  left and why.
