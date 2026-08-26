@@ -9,6 +9,23 @@
 - Prefer `rtk` for noisy developer commands like git, rg, npm, cargo, pytest.
 For PowerShell cmdlets, filesystem operations, commands involving Unicode paths, quoting-heavy scripts, or when exact output matters, use native shell commands directly or `rtk proxy` only when helpful.
 
+## Rules Organization
+
+**CLAUDE.md is a map, not an encyclopedia.**
+
+Follow the layered docs structure from OpenAI's harness engineering practice
+(https://openai.com/index/harness-engineering/):
+
+- CLAUDE.md holds only baseline rules plus a table of contents pointing to
+  deeper docs. Keep it short (~100 lines).
+- Topic-specific rules (technical architecture, design, plans, references)
+  live as separate files under `docs/`, indexed and cross-linked from the
+  CLAUDE.md table of contents.
+- Prefer progressive disclosure: give the agent a small, stable entry point
+  that says where to look next, instead of front-loading everything.
+- When a rule grows beyond a few lines or covers a single domain, move it
+  into `docs/` and leave a link in CLAUDE.md.
+
 ## Response Format
 
 When finishing a task, summarize:
