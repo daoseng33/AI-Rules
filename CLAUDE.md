@@ -28,12 +28,16 @@ Follow the layered docs structure from OpenAI's harness engineering practice
 
 ## Docs Index
 
-Topic-specific rules live under `docs/`. Read the relevant doc before
-working in its domain:
+Topic-specific rules live under `docs/` in the AI-Rules repo, exposed
+globally via the `~/.claude/docs` symlink. Always use the `~/.claude/docs/`
+paths below — relative `docs/` paths would wrongly resolve to the current
+project's own `docs/` directory. Read the relevant doc before working in
+its domain:
 
-- [docs/RTK.md](docs/RTK.md) — rtk CLI proxy reference (auto-imported above)
-- [docs/git-conventions.md](docs/git-conventions.md) — commit prefix and
-  body format; read before any commit
+- [~/.claude/docs/RTK.md](~/.claude/docs/RTK.md) — rtk CLI proxy reference
+  (auto-imported above)
+- [~/.claude/docs/git-conventions.md](~/.claude/docs/git-conventions.md) —
+  commit prefix and body format; read before any commit
 
 ## Response Format
 
