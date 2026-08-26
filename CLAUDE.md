@@ -80,6 +80,17 @@ When your changes create orphans:
 
 The test: Every changed line should trace directly to the user's request.
 
+## Safe Value Access
+
+**Avoid hardcoded values. Prefer safe value access.**
+
+- No magic numbers or magic strings: extract them into named constants,
+  enums, or configuration.
+- Prefer safe access over assumptions: optional binding / default values
+  instead of force-unwrapping or unchecked indexing.
+- Secrets, URLs, and environment-specific values come from config or
+  environment variables, never inline literals.
+
 ## Goal-Driven Execution
 
 **Define success criteria. Loop until verified.**
