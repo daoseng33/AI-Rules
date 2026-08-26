@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-@RTK.md
+@docs/RTK.md
 
 ## Mandatory Requirements
 
@@ -26,6 +26,15 @@ Follow the layered docs structure from OpenAI's harness engineering practice
 - When a rule grows beyond a few lines or covers a single domain, move it
   into `docs/` and leave a link in CLAUDE.md.
 
+## Docs Index
+
+Topic-specific rules live under `docs/`. Read the relevant doc before
+working in its domain:
+
+- [docs/RTK.md](docs/RTK.md) — rtk CLI proxy reference (auto-imported above)
+- [docs/git-conventions.md](docs/git-conventions.md) — commit prefix and
+  body format; read before any commit
+
 ## Response Format
 
 When finishing a task, summarize:
@@ -36,27 +45,6 @@ When finishing a task, summarize:
 4. How to verify manually
 5. Known limitations
 6. Suggested next task
-
-## Git Control
-
-### Commit Prefix
-
-- `feat:` New feature (MINOR)
-- `fix:` Bug fix (PATCH)
-- `docs:` Documentation only
-- `style:` Formatting only
-- `refactor:` Code restructuring without behavior changes
-- `test:` Test changes
-- `chore:` Maintenance
-- `build:` Build system changes
-- `ci:` CI/CD changes
-- `perf:` Performance improvements
-- `revert:` Revert previous commit
-
-### Commit Body
-
-- Use `-` bullet points.
-- Maximum 3 bullet points.
 
 ## Think Before Coding
 
