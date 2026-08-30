@@ -38,6 +38,9 @@ its domain:
   (auto-imported above)
 - [~/.claude/docs/git-conventions.md](~/.claude/docs/git-conventions.md) —
   commit prefix and body format; read before any commit
+- [~/.claude/docs/release-conventions.md](~/.claude/docs/release-conventions.md) —
+  version tagging, re-release version bump + build reset, AI-decided SemVer
+  bump; read before any release
 
 ## Response Format
 
