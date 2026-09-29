@@ -23,6 +23,15 @@ OPENAI_API_KEY="$(security find-generic-password -s OPENAI_API_KEY -w)"
 Never print the key value, echo it, log it, or write it into any file;
 only pass it via environment variable or request header at runtime.
 
+## Image Generation
+
+Paid image APIs cost money per call. Make images yourself first: HTML/CSS/SVG
+rendered locally (headless Chrome), Pillow composites, and assets already in
+the project. Call a paid image API (OpenAI `gpt-image-*`, Gemini, the
+media-pipeline `image-generation` skill / CLI / `create_asset`) only when the
+user explicitly asks for one in the current request. This overrides any skill
+that says to generate images automatically.
+
 ## Rules Organization
 
 **CLAUDE.md is a map, not an encyclopedia.**
@@ -55,6 +64,13 @@ its domain:
 - [~/.claude/docs/release-conventions.md](~/.claude/docs/release-conventions.md) —
   version tagging, re-release version bump + build reset, AI-decided SemVer
   bump; read before any release
+
+## Code Review
+
+After finishing each feature, run `/code-review high --fix` (the
+`code-review` skill with args `high --fix`) before the final summary.
+Skip it only when the user says not to review; when the user names a
+different effort level, use that level instead.
 
 ## Response Format
 
