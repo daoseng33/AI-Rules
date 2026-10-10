@@ -18,7 +18,8 @@ Before implementing:
 - No features beyond what was asked.
 - No abstractions for single-use code.
 - No "flexibility" or "configurability" that wasn't requested.
-- No error handling for impossible scenarios.
+- No error handling for impossible scenarios. Rare is not impossible: a full
+  disk, an outage or a failed migration must be handled — see error-handling.md.
 - If you write 200 lines and it could be 50, rewrite it.
 
 Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes, simplify.

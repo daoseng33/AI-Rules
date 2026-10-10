@@ -53,6 +53,10 @@ its domain:
 - [~/.claude/docs/coding-principles.md](~/.claude/docs/coding-principles.md) —
   Think Before Coding, Simplicity First, Surgical Changes, Safe Value Access,
   Goal-Driven Execution; read before planning, writing, or editing code
+- [~/.claude/docs/error-handling.md](~/.claude/docs/error-handling.md) —
+  classify, propagate or handle, what the user sees, recovery, cancellation,
+  log privacy, non-fatals, no silent swallowing, failure-path tests; read
+  before writing or changing any code that can fail
 - [~/.claude/docs/api-keys.md](~/.claude/docs/api-keys.md) — an OpenAI API
   key is available via macOS Keychain; read before any task that needs it
 
