@@ -58,8 +58,8 @@ its domain:
 
 ## Code Review
 
-After finishing each feature, run `/code-review high --fix` (the
-`code-review` skill with args `high --fix`) before the final summary.
+After finishing each feature, run `/code-review xhigh --fix` (the
+`code-review` skill with args `xhigh --fix`) before the final summary.
 Skip it only when the user says not to review; when the user names a
 different effort level, use that level instead.
 
