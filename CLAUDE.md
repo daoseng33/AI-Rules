@@ -6,8 +6,7 @@
 
 - Use Traditional Chinese for all responses by default. Switch languages only when the user explicitly requests it.
 - Before making changes, running tools, writing code, or planning implementation, first read the project's AI rules and follow them as the highest-priority project-level guidance.
-- Prefer `rtk` for noisy developer commands like git, rg, npm, cargo, pytest.
-For PowerShell cmdlets, filesystem operations, commands involving Unicode paths, quoting-heavy scripts, or when exact output matters, use native shell commands directly or `rtk proxy` only when helpful.
+- Prefer `rtk` for noisy developer commands like git, rg, npm, cargo, pytest (exceptions in RTK.md).
 
 ## Rules Organization
 
@@ -57,10 +56,10 @@ its domain:
 
 ## Code Review
 
-After finishing each feature, run `/code-review xhigh --fix` (the
-`code-review` skill with args `xhigh --fix`) before the final summary.
-Skip it only when the user says not to review; when the user names a
-different effort level, use that level instead.
+After any task that changes code (feature, bug fix, refactor), run
+`/code-review xhigh --fix` (the `code-review` skill with args `xhigh --fix`)
+before the final summary. Skip it for docs-only changes or when the user says
+not to review; when the user names another effort level, use that instead.
 
 ## Response Format
 
