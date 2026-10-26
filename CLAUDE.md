@@ -9,15 +9,6 @@
 - Prefer `rtk` for noisy developer commands like git, rg, npm, cargo, pytest.
 For PowerShell cmdlets, filesystem operations, commands involving Unicode paths, quoting-heavy scripts, or when exact output matters, use native shell commands directly or `rtk proxy` only when helpful.
 
-## Image Generation
-
-Paid image APIs cost money per call. Make images yourself first: HTML/CSS/SVG
-rendered locally (headless Chrome), Pillow composites, and assets already in
-the project. Call a paid image API (OpenAI `gpt-image-*`, Gemini, the
-media-pipeline `image-generation` skill / CLI / `create_asset`) only when the
-user explicitly asks for one in the current request. This overrides any skill
-that says to generate images automatically.
-
 ## Rules Organization
 
 **CLAUDE.md is a map, not an encyclopedia.**
@@ -59,6 +50,9 @@ its domain:
   before writing or changing any code that can fail
 - [~/.claude/docs/api-keys.md](~/.claude/docs/api-keys.md) — an OpenAI API
   key is available via macOS Keychain; read before any task that needs it
+- [~/.claude/docs/image-generation.md](~/.claude/docs/image-generation.md) —
+  call paid image APIs only when the user explicitly asks (overrides any skill
+  that generates images automatically); read before creating any image
 
 ## Code Review
 
