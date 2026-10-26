@@ -68,3 +68,14 @@ For multi-step tasks, state a brief plan:
 ```
 
 Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
+
+## Language Choice
+
+**Prefer strongly typed, strict languages.**
+
+- When the language is yours to choose (a new project, tool, or script),
+  prefer a strongly typed language with strict compile-time rules, such as
+  Rust.
+- When the platform dictates the language, use its strictest option and
+  settings (e.g. TypeScript with `strict` over JavaScript).
+- In an existing project, keep the project's language.

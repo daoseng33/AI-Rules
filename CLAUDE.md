@@ -43,7 +43,8 @@ its domain:
   bump; read before any release
 - [~/.claude/docs/coding-principles.md](~/.claude/docs/coding-principles.md) —
   Think Before Coding, Simplicity First, Surgical Changes, Safe Value Access,
-  Goal-Driven Execution; read before planning, writing, or editing code
+  Goal-Driven Execution, Language Choice (prefer strongly typed, strict
+  languages such as Rust); read before planning, writing, or editing code
 - [~/.claude/docs/error-handling.md](~/.claude/docs/error-handling.md) —
   classify, propagate or handle, what the user sees, recovery, cancellation,
   log privacy, non-fatals, no silent swallowing, failure-path tests; read
