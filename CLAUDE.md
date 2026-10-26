@@ -41,7 +41,7 @@ its domain:
   version tagging, re-release version bump + build reset, AI-decided SemVer
   bump; read before any release
 - [~/.claude/docs/coding-principles.md](~/.claude/docs/coding-principles.md) —
-  Think Before Coding, Simplicity First, Surgical Changes, Safe Value Access,
+  Think Before Coding, Simplicity First, Changing Existing Code, Safe Value Access,
   Goal-Driven Execution, Language Choice (prefer strongly typed, strict
   languages such as Rust); read before planning, writing, or editing code
 - [~/.claude/docs/error-handling.md](~/.claude/docs/error-handling.md) —

@@ -24,21 +24,27 @@ Before implementing:
 
 Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes, simplify.
 
-## Surgical Changes
+## Changing Existing Code
 
-**Touch only what you must. Clean up only your own mess.**
+**Existing code may be improved. Every change needs a stated reason, a
+predictable improvement, and proof that nothing broke.**
 
-When editing existing code:
-- Don't "improve" adjacent code, comments, or formatting.
-- Don't refactor things that aren't broken.
-- Match existing style, even if you'd do it differently.
-- If you notice unrelated dead code, mention it - don't delete it.
+- Change existing code when you can name the concrete gain: a bug, a risk,
+  duplication, a rule violation (e.g. error-handling.md), or code that makes
+  the task harder than it should be. Taste alone is not a reason: match the
+  existing style, even if you'd do it differently.
+- Verify rigorously: tests pass before and after. If the code you touch has
+  no tests, first add tests that pin its current behavior.
+- Keep improvements outside the task in their own commit, and list each one
+  in the final summary with its reason and expected effect.
+- Delete dead code only after confirming nothing references it (search,
+  build, tests).
+- If an improvement would outgrow the task (many files, a public API, a data
+  format), propose it as the next task instead.
+- Remove imports/variables/functions that your changes made unused.
 
-When your changes create orphans:
-- Remove imports/variables/functions that YOUR changes made unused.
-- Don't remove pre-existing dead code unless asked.
-
-The test: Every changed line should trace directly to the user's request.
+The test: every changed line traces to the user's request or to a stated,
+verified improvement.
 
 ## Safe Value Access
 
