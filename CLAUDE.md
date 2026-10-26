@@ -48,8 +48,8 @@ its domain:
   classify, propagate or handle, what the user sees, recovery, cancellation,
   log privacy, non-fatals, no silent swallowing, failure-path tests; read
   before writing or changing any code that can fail
-- [~/.claude/docs/api-keys.md](~/.claude/docs/api-keys.md) — an OpenAI API
-  key is available via macOS Keychain; read before any task that needs it
+- [~/.claude/docs/api-keys.md](~/.claude/docs/api-keys.md) — OpenAI and
+  Anthropic API keys are in macOS Keychain; read before any task needing one
 - [~/.claude/docs/image-generation.md](~/.claude/docs/image-generation.md) —
   call paid image APIs only when the user explicitly asks (overrides any skill
   that generates images automatically); read before creating any image
