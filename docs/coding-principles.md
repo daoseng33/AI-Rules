@@ -34,7 +34,8 @@ predictable improvement, and proof that nothing broke.**
   the task harder than it should be. Taste alone is not a reason: match the
   existing style, even if you'd do it differently.
 - Verify rigorously: tests pass before and after. If the code you touch has
-  no tests, first add tests that pin its current behavior.
+  no tests, first add tests that pin its current behavior (for styling and
+  scaffolding, follow Test scope under Goal-Driven Execution instead).
 - Keep improvements outside the task in their own commit, and list each one
   in the final summary with its reason and expected effect.
 - Delete dead code only after confirming nothing references it (search,
@@ -65,6 +66,11 @@ Transform tasks into verifiable goals:
 - "Add validation" → "Write tests for invalid inputs, then make them pass"
 - "Fix the bug" → "Write a test that reproduces it, then make it pass"
 - "Refactor X" → "Ensure tests pass before and after"
+
+Test scope: write the test first for logic, data handling, and bug fixes. For
+visual styling, scaffolding, and prototypes, verify by running the app and
+checking screenshots instead of adding test scaffolding, unless the project's
+rules require tests.
 
 For multi-step tasks, state a brief plan:
 ```
