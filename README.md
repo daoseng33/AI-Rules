@@ -29,6 +29,7 @@ AI-Rules/
 │   ├── image-generation.md
 │   └── release-conventions.md
 └── scripts/
+    ├── get-secret.ps1
     ├── install-macos.sh
     └── install-windows.ps1
 ```
@@ -54,7 +55,7 @@ AI-Rules/
 | `error-handling.md` | Writing code that can fail | Classify errors, handle once, user-facing failures, retry, cancellation, log privacy, non-fatals, no silent swallowing, failure-path tests |
 | `git-conventions.md` | Any commit | Commit prefixes; body as up to 3 `-` bullets |
 | `release-conventions.md` | Any release | Tag every release, bump the version on re-release, AI picks the SemVer bump |
-| `api-keys.md` | Tasks needing an API key | OpenAI and Anthropic keys come from the macOS Keychain at runtime, never printed |
+| `api-keys.md` | Tasks needing an API key | OpenAI and Anthropic keys come from the macOS Keychain or Windows Credential Manager at runtime, never printed |
 | `image-generation.md` | Creating an image | Make images locally first; paid image tools only on explicit request |
 | `RTK.md` | Noisy commands | When to use or avoid `rtk`, and how each tool integrates it |
 

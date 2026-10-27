@@ -51,7 +51,8 @@ its domain:
   log privacy, non-fatals, no silent swallowing, failure-path tests; read
   before writing or changing any code that can fail
 - [~/.ai-rules/docs/api-keys.md](~/.ai-rules/docs/api-keys.md) — OpenAI and
-  Anthropic API keys are in macOS Keychain; read before any task needing one
+  Anthropic API keys are in the macOS Keychain or Windows Credential Manager;
+  read before any task needing one
 - [~/.ai-rules/docs/image-generation.md](~/.ai-rules/docs/image-generation.md) —
   use paid image tools only when the user explicitly asks (overrides any skill
   that generates images automatically); read before creating any image
