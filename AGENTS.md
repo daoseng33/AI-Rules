@@ -61,9 +61,10 @@ its domain:
 
 After any task that changes code (feature, bug fix, refactor), review the
 diff for correctness bugs and apply the fixes before the final summary —
-Claude Code: run `/code-review xhigh --fix` (the `code-review` skill); Codex:
-review the full diff yourself. Skip it for docs-only changes or when the user
-says not to review; when the user names another effort level, use that instead.
+Claude Code: run `/code-review high --max-findings all --fix` (the
+`code-review` skill); Codex: review the full diff yourself. Skip it for
+docs-only changes or when the user says not to review; when the user names
+another effort level, use that instead.
 
 ## Response Format
 

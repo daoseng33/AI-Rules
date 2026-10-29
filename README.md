@@ -43,7 +43,7 @@ AI-Rules/
 | Mandatory Requirements | Reply in Traditional Chinese; read the project's AI rules first; use `rtk` for noisy output |
 | Rules Organization | The entry file is a map; topic rules live in `docs/`; write rules tool-neutrally |
 | Docs Index | Each topic doc and when to read it |
-| Code Review | After any code change, review the diff and apply fixes (Claude Code: `/code-review xhigh --fix`) |
+| Code Review | After any code change, review the diff and apply fixes (Claude Code: `/code-review high --max-findings all --fix`) |
 | Response Format | Finish with: what changed, files, tests, how to verify, limitations, next task |
 | Autonomous Execution | Decide and verify yourself; hand off to a human only for decisions, human-only QA, or unsafe assumptions |
 
