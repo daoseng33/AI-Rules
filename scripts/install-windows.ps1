@@ -5,10 +5,19 @@
 #   file symlinks need admin rights. Re-run this script after every `git pull`.
 $ErrorActionPreference = "Stop"
 
+# Returns the absolute path a link points to. Windows PowerShell can report a
+# junction target in NT form ("\??\C:\..."), and a symlink target may be
+# relative to the link's own directory.
+function Get-LinkTarget($Item) {
+    $Target = [string](@($Item.Target)[0]) -replace '^\\\?\?\\', ''
+    if ([System.IO.Path]::IsPathRooted($Target)) { return $Target }
+    return [System.IO.Path]::GetFullPath((Join-Path (Split-Path -Parent $Item.FullName) $Target))
+}
+
 # Resolve the clone's real path: run as ~/.ai-rules/scripts/install-windows.ps1,
 # $PSScriptRoot would make the clone look like the ~/.ai-rules junction itself.
-$RepoItem = Get-Item -LiteralPath (Split-Path -Parent $PSScriptRoot)
-$RepoDir = if ($RepoItem.LinkType) { @($RepoItem.Target)[0] } else { $RepoItem.FullName }
+$RepoItem = Get-Item -LiteralPath (Split-Path -Parent $PSScriptRoot) -Force
+$RepoDir = if ($RepoItem.LinkType) { Get-LinkTarget $RepoItem } else { $RepoItem.FullName }
 $RulesLink = Join-Path $env:USERPROFILE ".ai-rules"
 $ClaudeDir = if ($env:CLAUDE_CONFIG_DIR) { $env:CLAUDE_CONFIG_DIR } else { Join-Path $env:USERPROFILE ".claude" }
 $CodexDir = if ($env:CODEX_HOME) { $env:CODEX_HOME } else { Join-Path $env:USERPROFILE ".codex" }
@@ -52,12 +61,12 @@ function Invoke-Replace([string]$Path, [scriptblock]$Write) {
 # restored.
 function Set-Junction([string]$Link, [string]$Target) {
     $Existing = Get-Item -LiteralPath $Link -Force -ErrorAction SilentlyContinue
-    if ($Existing -and -not $Existing.LinkType -and $Existing.FullName -eq (Get-Item -LiteralPath $Target).FullName) {
+    if ($Existing -and -not $Existing.LinkType -and $Existing.FullName -eq (Get-Item -LiteralPath $Target -Force).FullName) {
         Write-Host "Skipped ${Link}: it already is $Target"
         return
     }
     if ($Existing -and $Existing.LinkType) {
-        $OldTarget = @($Existing.Target)[0]
+        $OldTarget = Get-LinkTarget $Existing
         # Deleting the link itself (non-recursively) never touches the files it points to.
         if ($Existing.PSIsContainer) {
             [System.IO.Directory]::Delete($Link, $false)
