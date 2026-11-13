@@ -61,6 +61,25 @@ Content rules:
 If the project has no `決策/` folder yet, create the folder and the note, and
 tell the owner the project has no decision-log base yet.
 
+## Git Backup
+
+The vault is a local git repository with no remote. It exists to give a
+restore point around automated writes; Obsidian Sync does not carry `.git`,
+so the history lives only on the machine where it was created.
+
+- Before writing to the vault, run `git status --short` there. If the owner
+  has uncommitted edits, commit them first as their own snapshot (`chore:
+  snapshot the owner's edits before an automated write`), so their changes
+  and the agent's stay in separate commits.
+- After writing, commit exactly the files you added or changed, with a
+  message that says what was written.
+- Never add a remote to the vault or push it; it holds private notes.
+- Never rewrite its history (no amend, rebase or `reset --hard`). To undo an
+  automated write, use `git revert` or `git restore` on the affected paths
+  and tell the owner.
+- If the vault is not a git repository on this machine, write as usual and
+  say so once.
+
 ## Writing to the Vault
 
 - Automated writes only add notes, in the folders named above. Never edit a
