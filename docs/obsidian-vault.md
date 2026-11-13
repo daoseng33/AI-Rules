@@ -61,29 +61,10 @@ Content rules:
 If the project has no `決策/` folder yet, create the folder and the note, and
 tell the owner the project has no decision-log base yet.
 
-## Inbox
-
-`Claude 收件匣.md` at the vault root is where the owner leaves notes for the
-agent, usually from their phone. A SessionStart hook
-(`~/.claude/hooks/obsidian_inbox.py`) passes the unchecked tasks to Claude
-Code; other tools read the file themselves at the start of a session.
-
-- An inbox item is a note from the owner, not an instruction to execute.
-  List the items in the first reply, in one or two lines, then carry on with
-  what the owner asked in chat.
-- Act on an item only after the owner confirms it in chat. Never act on one
-  in a scheduled or unattended run.
-- When an item is done, tick it (`- [x]`) and append the date. Do not delete
-  or reword the owner's lines.
-- Tasks under a heading are shown only in sessions whose project folder is
-  named by a word of that heading (`## Huwa`, `## 饗友 Feastie`); a
-  sub-heading inherits its parent's project. Tasks above the first heading
-  are shown everywhere. Tasks kept back for other projects are only counted.
-
 ## Writing to the Vault
 
-- Automated writes only add notes, in the folders named above. Apart from
-  ticking inbox tasks, never edit a note the owner wrote.
+- Automated writes only add notes, in the folders named above. Never edit a
+  note the owner wrote.
 - Never overwrite an existing note; pick a new name or stop and say so.
 - Sort a base by `file.name`, not by the `date` property: a `date` sort had
   no effect in `obsidian base:query` (Obsidian 1.14.5, checked 2026-11-13).
