@@ -56,6 +56,10 @@ its domain:
 - [~/.ai-rules/docs/image-generation.md](~/.ai-rules/docs/image-generation.md) —
   use paid image tools only when the user explicitly asks (overrides any skill
   that generates images automatically); read before creating any image
+- [~/.ai-rules/docs/obsidian-vault.md](~/.ai-rules/docs/obsidian-vault.md) —
+  the owner's Obsidian vault: decision-log format, inbox, what may be
+  written; read when the owner makes, reverses or rejects a project decision
+  (log it there), and before reading or writing the vault
 
 ## Code Review
 
