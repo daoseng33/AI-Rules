@@ -66,6 +66,13 @@ tell the owner the project has no decision-log base yet.
 - Automated writes only add notes, in the folders named above. Never edit a
   note the owner wrote.
 - Never overwrite an existing note; pick a new name or stop and say so.
+- Never move, rename or delete a note with shell commands (`mv`, `git mv`,
+  `rm`). Obsidian only updates links for renames it performs itself, so a
+  shell move breaks every `[[link]]` to the note. When the owner asks for one,
+  use `obsidian rename`, `obsidian move` or `obsidian delete` (which moves the
+  note to the trash) with the app running. Reorganising folders is the
+  owner's decision.
+- Never touch `.obsidian/`; it holds the app's own settings.
 - Sort a base by `file.name`, not by the `date` property: a `date` sort had
   no effect in `obsidian base:query` (Obsidian 1.14.5, checked 2026-11-13).
 - The `obsidian` CLI works only while the Obsidian app is running. Use it to
