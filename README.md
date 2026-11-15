@@ -51,7 +51,7 @@ AI-Rules/
 
 | File | Read before | Summary |
 |---|---|---|
-| `coding-principles.md` | Planning or writing code | Think before coding, simplicity first, improving existing code with stated reasons and verification, safe value access, goal-driven execution and test scope, strict typed languages such as Rust |
+| `coding-principles.md` | Planning or writing code | Think before coding, simplicity first, improving existing code with stated reasons and verification, safe value access, explicit state instead of implicit state machines, goal-driven execution and test scope, strict typed languages such as Rust |
 | `error-handling.md` | Writing code that can fail | Classify errors, handle once, user-facing failures, retry, cancellation, log privacy, non-fatals, no silent swallowing, failure-path tests |
 | `git-conventions.md` | Any commit | Commit prefixes; body as up to 3 `-` bullets |
 | `release-conventions.md` | Any release | Tag every release, bump the version on re-release, AI picks the SemVer bump |

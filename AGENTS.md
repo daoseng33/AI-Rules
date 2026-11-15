@@ -44,8 +44,9 @@ its domain:
   bump; read before any release
 - [~/.ai-rules/docs/coding-principles.md](~/.ai-rules/docs/coding-principles.md) —
   Think Before Coding, Simplicity First, Changing Existing Code, Safe Value Access,
-  Goal-Driven Execution, Language Choice (prefer strongly typed, strict
-  languages such as Rust); read before planning, writing, or editing code
+  Explicit State, Goal-Driven Execution, Language Choice (prefer strongly
+  typed, strict languages such as Rust); read before planning, writing, or
+  editing code
 - [~/.ai-rules/docs/error-handling.md](~/.ai-rules/docs/error-handling.md) —
   classify, propagate or handle, what the user sees, recovery, cancellation,
   log privacy, non-fatals, no silent swallowing, failure-path tests; read
@@ -66,9 +67,11 @@ its domain:
 After any task that changes code (feature, bug fix, refactor), review the
 diff for correctness bugs and apply the fixes before the final summary —
 Claude Code: run `/code-review high --max-findings all --fix` (the
-`code-review` skill); Codex: review the full diff yourself. Skip it for
-docs-only changes or when the user says not to review; when the user names
-another effort level, use that instead.
+`code-review` skill); Codex: review the full diff yourself. In the same pass,
+check the diff yourself for implicit state machines (Explicit State in
+`~/.ai-rules/docs/coding-principles.md`). Skip the review for docs-only
+changes or when the user says not to review; when the user names another
+effort level, use that instead.
 
 ## Response Format
 
