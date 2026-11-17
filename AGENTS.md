@@ -28,6 +28,25 @@ Follow the layered docs structure from OpenAI's harness engineering practice
 - Sync only when the user asks: `git -C ~/.ai-rules pull`; on Windows, then
   run `~/.ai-rules/scripts/install-windows.ps1`.
 
+## Corrections Become Checks
+
+**A check is enforced. Prose is only read.**
+
+When the user corrects you or asks for a new rule, use the strongest form
+that fits, in this order:
+
+1. Make the mistake impossible: a type, an API or a structure that cannot
+   express it (e.g. Explicit State in coding-principles.md).
+2. A deterministic check: a lint rule, test, compiler setting, CI step or
+   tool hook, whose error message names the root-cause fix.
+3. Prose in these rules, only when the correction needs judgment or no check
+   can express it.
+
+A check on code lives in the project that owns the code, not in this repo.
+Add it in the same task when it is small; otherwise propose it as the next
+task. If existing code fails the new check, exempt it explicitly and report
+it (Changing Existing Code) rather than widening the task.
+
 ## Docs Index
 
 Always use the `~/.ai-rules/docs/` paths below (the install scripts link
