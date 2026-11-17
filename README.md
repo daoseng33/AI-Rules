@@ -28,6 +28,7 @@ AI-Rules/
 │   ├── error-handling.md
 │   ├── git-conventions.md
 │   ├── image-generation.md
+│   ├── obsidian-vault.md
 │   └── release-conventions.md
 └── scripts/
     ├── get-secret.ps1
@@ -59,6 +60,7 @@ AI-Rules/
 | `release-conventions.md` | Any release | Tag every release, bump the version on re-release, AI picks the SemVer bump |
 | `api-keys.md` | Tasks needing an API key | OpenAI and Anthropic keys come from the macOS Keychain or Windows Credential Manager at runtime, never printed |
 | `image-generation.md` | Creating an image | Make images locally first; paid image tools only on explicit request |
+| `obsidian-vault.md` | The owner makes a project decision, or reading or writing the vault | Decision-log format, what may be written to the owner's Obsidian vault, git backup around automated writes |
 | `autonomous-execution.md` | Stopping to ask the user | The full stop conditions and the non-reasons to stop |
 | `RTK.md` | Noisy commands | When to use or avoid `rtk`, and how each tool integrates it |
 
