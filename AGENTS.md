@@ -80,6 +80,9 @@ its domain:
   the owner's Obsidian vault: decision-log format and what may be written;
   read when the owner makes, reverses or rejects a project decision (log it
   there), and before reading or writing the vault
+- [~/.ai-rules/docs/autonomous-execution.md](~/.ai-rules/docs/autonomous-execution.md) —
+  the full stop conditions and the non-reasons to stop; read before stopping
+  to ask the user
 
 ## Code Review
 
@@ -99,7 +102,9 @@ When finishing a task, summarize:
 1. What changed
 2. Files changed
 3. Tests added or updated
-4. How to verify manually
+4. Verification evidence: what you ran and its result; a screenshot for a
+   UI change; a state diagram for a change to a state machine. Then what
+   only a human can check, and how
 5. Known limitations
 6. Suggested next task
 
@@ -110,22 +115,8 @@ genuinely can't.**
 
 Default: finish the whole task without checking in, and verify the result
 yourself (tests, build, run the app, screenshots) before calling it done.
-Routine judgment calls (naming, file layout, which library is already in
-use, test structure) are yours to make - state the assumption and keep going.
-
-Stop and hand back to a human ONLY when:
-- A human decision is required: product/scope tradeoffs, irreversible or
-  outward-facing actions, credentials, spending, anything with no
-  recoverable wrong answer.
-- Manual QA is required: the result can only be judged by a human (subjective
-  look and feel, a physical device, a real account). Check everything a tool
-  can check first; hand over only what remains.
-- Proceeding under any assumption would be unsafe, or would make the work
-  useless if the assumption turns out wrong.
-
-Not reasons to stop:
-- "I want to confirm before continuing."
-- "There are two reasonable approaches." → pick one, say which and why.
-- "Something failed." → diagnose it and try another way before handing off.
-- "One sub-step is blocked." → finish everything else, then report what is
-  left and why.
+Routine judgment calls are yours to make - state the assumption and keep
+going. Stop only for a decision that is the human's to make, QA that only a
+human can do, or when any assumption would be unsafe. A failure, a blocked
+sub-step, or two reasonable approaches are not reasons to stop (details in
+`~/.ai-rules/docs/autonomous-execution.md`).
