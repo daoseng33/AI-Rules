@@ -42,7 +42,7 @@ AI-Rules/
 
 | Section | Summary |
 |---|---|
-| Mandatory Requirements | Reply in Traditional Chinese; read the project's AI rules first; use `rtk` for noisy output |
+| Mandatory Requirements | Reply in Traditional Chinese; read the project's AI rules first; use `rtk` for noisy output; ask before any call that costs money or plan credits |
 | Rules Organization | The entry file is a map; topic rules live in `docs/`; write rules tool-neutrally |
 | Corrections Become Checks | Turn a correction into a type, lint rule, test or hook first; prose only when it needs judgment |
 | Docs Index | Each topic doc and when to read it |
@@ -58,8 +58,8 @@ AI-Rules/
 | `error-handling.md` | Writing code that can fail | Classify errors, handle once, user-facing failures, retry, cancellation, log privacy, non-fatals, no silent swallowing, failure-path tests |
 | `git-conventions.md` | Any commit | Commit prefixes; body as up to 3 `-` bullets |
 | `release-conventions.md` | Any release | Tag every release, bump the version on re-release, AI picks the SemVer bump |
-| `api-keys.md` | Tasks needing an API key | OpenAI and Anthropic keys come from the macOS Keychain or Windows Credential Manager at runtime, never printed |
-| `image-generation.md` | Creating an image | Make images locally first; paid image tools only on explicit request |
+| `api-keys.md` | Tasks needing an API key | OpenAI and Anthropic keys come from the macOS Keychain or Windows Credential Manager at runtime, never printed; ask before a paid call |
+| `image-generation.md` | Creating an image | Make images locally first; ask before using a paid image tool |
 | `obsidian-vault.md` | The owner makes a project decision, or reading or writing the vault | Decision-log format, what may be written to the owner's Obsidian vault, git backup around automated writes |
 | `autonomous-execution.md` | Stopping to ask the user | The full stop conditions and the non-reasons to stop |
 | `RTK.md` | Noisy commands | When to use or avoid `rtk`, and how each tool integrates it |

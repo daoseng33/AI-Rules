@@ -5,7 +5,8 @@ credential store: the macOS Keychain or the Windows Credential Manager, named
 `OPENAI_API_KEY` and `ANTHROPIC_API_KEY`. When a task needs one of these
 APIs, do NOT say it is unavailable and do NOT ask the user for a key —
 retrieve it at runtime inside the command or script, as shown below for each
-OS. Read each key per command the same way. In Bash, a bare assignment is not
+OS. The call itself still needs the user's yes (Ask Before Calling). Read
+each key per command the same way. In Bash, a bare assignment is not
 exported: use the variable in a request header, or prefix the command that
 reads it (`OPENAI_API_KEY="$(...)" python app.py`). When a key is missing,
 tell the user to add it themselves; never ask them to paste it into the chat.
@@ -15,6 +16,15 @@ no `anthropic-workspace-id` header. Never export it from a shell profile or
 store it as a persistent environment variable (Windows: `setx` or System
 Properties): an `ANTHROPIC_API_KEY` in Claude Code's own environment makes
 Claude Code bill that key instead of the user's sign-in.
+
+## Ask Before Calling
+
+Having a key is not permission to spend. Before running anything that calls a
+paid API, ask the user: what the call is for, which model, and roughly how
+many calls or how much it costs. Then wait for a yes. A request that names
+the API call is the yes. One yes covers the stated purpose and volume, not
+later calls. Writing or editing code that calls the API needs no approval;
+running it against the live API does.
 
 ## macOS
 

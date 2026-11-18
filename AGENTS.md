@@ -5,6 +5,7 @@
 - Use Traditional Chinese for all responses by default. Switch languages only when the user explicitly requests it.
 - Before making changes, running tools, writing code, or planning implementation, first read the project's AI rules and follow them as the highest-priority project-level guidance.
 - Use `rtk` for noisy build, test, and lint output when a summary is enough; never for commands that need exact output, interactive tools, or Keychain/Xcode/simulator/system commands (details in RTK.md).
+- Ask before any call that costs money or plan credits beyond the coding tool's own session (a paid API, paid image generation, any metered service): say what it is for and roughly what it costs, then wait for a yes. A request that names the paid call is the yes. Having the key is not permission (details in `~/.ai-rules/docs/api-keys.md` and `~/.ai-rules/docs/image-generation.md`).
 
 ## Rules Organization
 
@@ -72,10 +73,11 @@ its domain:
   before writing or changing any code that can fail
 - [~/.ai-rules/docs/api-keys.md](~/.ai-rules/docs/api-keys.md) — OpenAI and
   Anthropic API keys are in the macOS Keychain or Windows Credential Manager;
-  read before any task needing one
+  ask before a paid call; read before any task needing one
 - [~/.ai-rules/docs/image-generation.md](~/.ai-rules/docs/image-generation.md) —
-  use paid image tools only when the user explicitly asks (overrides any skill
-  that generates images automatically); read before creating any image
+  make images locally first and ask before using a paid image tool (overrides
+  any skill that generates images automatically); read before creating any
+  image
 - [~/.ai-rules/docs/obsidian-vault.md](~/.ai-rules/docs/obsidian-vault.md) —
   the owner's Obsidian vault: decision-log format and what may be written;
   read when the owner makes, reverses or rejects a project decision (log it
@@ -117,7 +119,8 @@ Default: finish the whole task without checking in, and verify the result
 yourself (tests, build, run the app, screenshots) before calling it done.
 Routine judgment calls are yours to make - state the assumption and keep
 going. Stop only for a decision that is the human's to make (product or scope
-tradeoffs, irreversible or outward-facing actions, credentials, spending), QA
-that only a human can do, or when any assumption would be unsafe. A failure,
-a blocked sub-step, or two reasonable approaches are not reasons to stop
-(details in `~/.ai-rules/docs/autonomous-execution.md`).
+tradeoffs, irreversible or outward-facing actions, credentials, spending such
+as a paid API call), QA that only a human can do, or when any assumption
+would be unsafe. A failure, a blocked sub-step, or two reasonable approaches
+are not reasons to stop (details in
+`~/.ai-rules/docs/autonomous-execution.md`).
