@@ -57,6 +57,9 @@ build (it compiled, type-checked or linted clean), run (the app or command
 was run and the change seen working), review (the diff was code-reviewed).
 If nothing was run, say why: ${TRAILER_KEY}: none (docs only)
 
+If a script or release tool wrote this message, add the line to the message
+that tool writes, e.g. ${TRAILER_KEY}: none (version bump)
+
 Write only what happened. Never skip this hook with --no-verify.
 Rules: ~/.ai-rules/docs/git-conventions.md (Verification Trailer)
 EOF
