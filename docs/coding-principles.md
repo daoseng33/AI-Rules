@@ -115,6 +115,54 @@ For multi-step tasks, state a brief plan:
 
 Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
 
+Claude Code: the owner can hand a criterion to `/goal <condition>`, which
+starts another turn until an evaluator judges the condition met. The
+evaluator reads only the conversation and runs nothing itself, so:
+
+- Run the stated check and show its output in the conversation. Saying that
+  it passes proves nothing to the evaluator.
+- Honest Checks and the three-round limit (autonomous-execution.md) still
+  hold under a goal. At the limit, say plainly that the check is past three
+  rounds and what you need from the owner, rather than trying a fourth. If
+  the goal starts another turn, repeat that report without a new attempt.
+- When a task you propose suits a goal, give the owner the condition to
+  paste: one measurable end state, the command that proves it, what must not
+  change, and a turn bound.
+
+```text
+/goal scripts/test.sh exits 0 with no check weakened, or stop after 20 turns
+```
+
+## Honest Checks
+
+**A check passes because the code is right, never because the check moved.**
+
+A check is anything that judges the change: a test, a lint or compiler
+setting, a CI step, a verify script, a hook, the project's Review Checklist.
+
+- Never reach green by weakening a check: no skipped or deleted test, no
+  loosened assertion or threshold, no exemption for the code you are
+  changing, no added sleep, no rerunning until it passes, no `--no-verify`
+  or other switch that skips a hook. The flaky-test rule below is the one
+  case that ends in a deleted test.
+- Edit or remove a check in the same diff as the code it judges only when
+  the requirement changed or the check itself was wrong. List each such
+  edit in the final summary with its reason, apart from the code changes.
+- Exempting existing code from a check you just added (Corrections Become
+  Checks in AGENTS.md) is not weakening it: say so and report it.
+- A test that fails every time is a real failure. Fix the code, or the test
+  when the requirement changed, or stop at the three-round limit
+  (autonomous-execution.md). Failing is never a reason to delete it.
+- A flaky test passes and fails on unchanged code. Rerun it to diagnose,
+  never to collect a pass. Fix the root cause; if you cannot find it, delete
+  the test, record why in the commit message and the final summary, and
+  propose the fix as the next task.
+- A rerun or retry that the project's rules already document stands. Adding
+  a new one is the owner's decision.
+
+This section covers tests and checks. Retry in product code follows
+error-handling.md.
+
 ## Language Choice
 
 **Prefer strongly typed, strict languages.**
