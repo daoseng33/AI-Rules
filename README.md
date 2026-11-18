@@ -18,6 +18,7 @@ so the links resolve from any project.
 
 ```
 AI-Rules/
+├── .github/workflows/   CI: runs the hook tests
 ├── AGENTS.md            Shared entry point: baseline rules + Docs Index
 ├── CLAUDE.md            Claude Code entry point: imports AGENTS.md and docs/RTK.md
 ├── docs/                Topic rules, read before working in their domain

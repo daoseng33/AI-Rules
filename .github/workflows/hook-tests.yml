@@ -17,6 +17,8 @@ jobs:
       matrix:
         os: [macos-latest, ubuntu-latest]
     runs-on: ${{ matrix.os }}
+    # The suite takes seconds; a run that waits on input must not sit for hours.
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v5
       # The suite needs config-based hooks (Git 2.54 or later) and says so
