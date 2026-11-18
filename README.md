@@ -18,7 +18,7 @@ so the links resolve from any project.
 
 ```
 AI-Rules/
-├── AGENTS.md            Shared entry point: baseline rules + Docs Index (~100 lines)
+├── AGENTS.md            Shared entry point: baseline rules + Docs Index
 ├── CLAUDE.md            Claude Code entry point: imports AGENTS.md and docs/RTK.md
 ├── docs/                Topic rules, read before working in their domain
 │   ├── RTK.md
@@ -120,8 +120,8 @@ rules, and are safe to re-run, including from the `~/.ai-rules` path.
 
 ## Editing the Rules
 
-- Shared rules go in `AGENTS.md` or `docs/`. Keep `AGENTS.md` around 100 lines
-  and move single-domain rules into `docs/`.
+- Shared rules go in `AGENTS.md` or `docs/`. Keep `AGENTS.md` short and move
+  single-domain rules into `docs/`.
 - Every new doc gets a Docs Index entry that says when to read it.
 - When a step differs per tool, list each tool's variant in place. Put a rule
   only Claude Code needs in `CLAUDE.md`, after the imports. A rule only Codex
