@@ -152,7 +152,9 @@ message ends with a well-formed `Verified:` trailer
   ```
 
 Run its tests with `hooks/tests/commit-msg-test.sh`. They install the hook
-into a throwaway `HOME` and never touch the real git config.
+into a throwaway `HOME` and never touch the real git config. CI runs them on
+every pull request and on `main`, on macOS and Ubuntu
+(`.github/workflows/hook-tests.yml`).
 
 ## Update
 
