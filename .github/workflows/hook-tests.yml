@@ -1,0 +1,29 @@
+name: Hook tests
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  commit-msg:
+    name: commit-msg (${{ matrix.os }})
+    # macOS is where the hook is installed; Ubuntu runs it under dash as /bin/sh.
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    # The suite takes seconds; a run that waits on input must not sit for hours.
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      # The suite needs config-based hooks (Git 2.54 or later) and says so
+      # when the runner's Git is older.
+      - name: Show the Git version
+        run: git --version
+      - name: Run the commit-msg hook tests
+        run: hooks/tests/commit-msg-test.sh

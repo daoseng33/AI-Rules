@@ -18,6 +18,7 @@ so the links resolve from any project.
 
 ```
 AI-Rules/
+├── .github/workflows/   CI: runs the hook tests
 ├── AGENTS.md            Shared entry point: baseline rules + Docs Index
 ├── CLAUDE.md            Claude Code entry point: imports AGENTS.md and docs/RTK.md
 ├── docs/                Topic rules, read before working in their domain
@@ -152,7 +153,9 @@ message ends with a well-formed `Verified:` trailer
   ```
 
 Run its tests with `hooks/tests/commit-msg-test.sh`. They install the hook
-into a throwaway `HOME` and never touch the real git config.
+into a throwaway `HOME` and never touch the real git config. CI runs them on
+every pull request and on `main`, on macOS and Ubuntu
+(`.github/workflows/hook-tests.yml`).
 
 ## Update
 
