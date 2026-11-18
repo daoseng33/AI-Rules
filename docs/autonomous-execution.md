@@ -21,12 +21,18 @@ Stop and hand back to a human ONLY when:
   can check first; hand over only what remains.
 - Proceeding under any assumption would be unsafe, or would make the work
   useless if the assumption turns out wrong.
+- The same check (a test, build, lint or verify step) still fails after
+  three rounds. A round is one fix attempt followed by a rerun of that check;
+  a different check failing starts its own count. Finish the work that does
+  not depend on it first, then report the check, what each round changed, and
+  the failure output as it stands now.
 
 ## Not Reasons to Stop
 
 - "I want to confirm before continuing," when none of the conditions above
   applies.
 - "There are two reasonable approaches." → pick one, say which and why.
-- "Something failed." → diagnose it and try another way before handing off.
+- "Something failed." → diagnose it and try another way. Hand off only at
+  the three-round limit above.
 - "One sub-step is blocked." → finish everything else, then report what is
   left and why.

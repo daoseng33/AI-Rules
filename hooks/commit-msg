@@ -1,0 +1,118 @@
+#!/bin/sh
+# Enforces the `Verified:` trailer of docs/git-conventions.md on commits made
+# from an AI agent session. Installed for every repo by the install script,
+# as a config-based hook (`hook.ai-rules-verified.*`, Git 2.54 or later), so a
+# repo's own .git/hooks keep running beside it.
+#
+# Turn it off in one repo with: git config hook.ai-rules-verified.enabled false
+set -eu
+
+readonly TRAILER_KEY="Verified"
+
+# Only agent sessions are held to the stamp; a commit made by hand passes.
+# Claude Code sets both markers in every command it runs (checked 2026-11-19).
+# Another tool is covered once the commands it spawns carry AI_AGENT.
+if [ -z "${AI_AGENT:-}" ] && [ -z "${CLAUDECODE:-}" ]; then
+    exit 0
+fi
+
+if [ "$#" -lt 1 ] || [ ! -f "$1" ]; then
+    echo "commit-msg: expected the commit message file as the first argument." >&2
+    exit 2
+fi
+readonly MESSAGE_FILE="$1"
+
+git_dir="$(git rev-parse --git-dir)"
+
+# A merge commit records a merge, and a rebase or a cherry-pick replays
+# commits that may be older than this rule: none is a new change to stamp. A
+# clean cherry-pick never runs this hook; one continued after a conflict does.
+for marker in MERGE_HEAD CHERRY_PICK_HEAD rebase-merge rebase-apply; do
+    if [ -e "${git_dir}/${marker}" ]; then
+        exit 0
+    fi
+done
+
+# The message as Git will store it: nothing from the `commit -v` scissors line
+# down, and no comment lines.
+message="$(sed '/^. -\{24\} >8 -\{24\}$/,$d' "${MESSAGE_FILE}" | git stripspace --strip-comments)"
+
+# Autosquash commits are folded into another commit, whose stamp stands.
+case "${message}" in
+    "fixup! "* | "squash! "* | "amend! "*) exit 0 ;;
+esac
+
+reject() {
+    cat >&2 <<EOF
+commit-msg: $1
+
+End the commit message with one line saying how this change was checked.
+Put it in the last block, after a blank line, next to any Co-Authored-By
+line:
+
+    ${TRAILER_KEY}: tests, run
+
+Allowed, comma-separated: tests (the tests covering the change passed),
+build (it compiled, type-checked or linted clean), run (the app or command
+was run and the change seen working), review (the diff was code-reviewed).
+If nothing was run, say why: ${TRAILER_KEY}: none (docs only)
+
+If a script or release tool wrote this message, add the line to the message
+that tool writes, e.g. ${TRAILER_KEY}: none (version bump)
+
+Write only what happened. Never skip this hook with --no-verify.
+Rules: ~/.ai-rules/docs/git-conventions.md (Verification Trailer)
+EOF
+    exit 1
+}
+
+# Only a line in the final trailer block counts. `--no-divider` keeps a `---`
+# line in the body from ending the message early.
+stamps="$(printf '%s\n' "${message}" |
+    git interpret-trailers --parse --no-divider |
+    grep "^${TRAILER_KEY}: " || true)"
+
+if [ -z "${stamps}" ]; then
+    reject "the commit message has no '${TRAILER_KEY}:' trailer in its last block."
+fi
+if [ "$(printf '%s\n' "${stamps}" | grep -c '')" -ne 1 ]; then
+    reject "the commit message has more than one '${TRAILER_KEY}:' trailer."
+fi
+
+value="${stamps#"${TRAILER_KEY}: "}"
+if [ -z "${value}" ]; then
+    reject "the '${TRAILER_KEY}:' trailer is empty."
+fi
+
+# Git reads `Verified:tests` and a folded value as trailers too, but the
+# `git log --grep='^Verified: '` queries in the rules doc match only the
+# plain one-line form, so that is the form required here.
+if ! printf '%s\n' "${message}" | grep -Fxq "${TRAILER_KEY}: ${value}"; then
+    reject "write the trailer on one line as '${TRAILER_KEY}: <how>'."
+fi
+
+case "${value}" in
+    "none ("?*")") exit 0 ;;
+    none | "none "* | "none("*)
+        reject "'${TRAILER_KEY}: none' needs its reason: none (<reason>)." ;;
+    *,)
+        # The split below would drop the empty entry after a last comma.
+        reject "the '${TRAILER_KEY}:' trailer ends with a comma." ;;
+esac
+
+# Split the value on commas without expanding globs.
+set -f
+old_ifs="${IFS}"
+IFS=","
+# shellcheck disable=SC2086
+set -- ${value}
+IFS="${old_ifs}"
+set +f
+
+for step in "$@"; do
+    step="$(printf '%s' "${step}" | sed 's/^ *//; s/ *$//')"
+    case "${step}" in
+        tests | build | run | review) ;;
+        *) reject "'${step}' is not one of tests, build, run, review." ;;
+    esac
+done
