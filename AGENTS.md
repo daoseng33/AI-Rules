@@ -14,7 +14,7 @@ Follow the layered docs structure from OpenAI's harness engineering practice
 (https://openai.com/index/harness-engineering/):
 
 - This file holds only baseline rules plus a table of contents pointing to
-  deeper docs. Keep it short (~100 lines).
+  deeper docs. Keep it short.
 - Topic-specific rules (technical architecture, design, plans, references)
   live as separate files under `docs/`, indexed and cross-linked from the
   Docs Index below.
@@ -116,7 +116,8 @@ genuinely can't.**
 Default: finish the whole task without checking in, and verify the result
 yourself (tests, build, run the app, screenshots) before calling it done.
 Routine judgment calls are yours to make - state the assumption and keep
-going. Stop only for a decision that is the human's to make, QA that only a
-human can do, or when any assumption would be unsafe. A failure, a blocked
-sub-step, or two reasonable approaches are not reasons to stop (details in
-`~/.ai-rules/docs/autonomous-execution.md`).
+going. Stop only for a decision that is the human's to make (product or scope
+tradeoffs, irreversible or outward-facing actions, credentials, spending), QA
+that only a human can do, or when any assumption would be unsafe. A failure,
+a blocked sub-step, or two reasonable approaches are not reasons to stop
+(details in `~/.ai-rules/docs/autonomous-execution.md`).
